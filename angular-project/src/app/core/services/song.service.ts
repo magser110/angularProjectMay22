@@ -1,8 +1,11 @@
 //service to manage songs (crud???)
 
-import { signal } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { Song } from "../models/song.model";
 
+@Injectable({
+  providedIn: 'root'
+})
 
 export class SongService {
   private songs = signal<Song[]>([
@@ -48,12 +51,12 @@ export class SongService {
   }
 
   addSong(t: string, art: string, alb: string, g: string, y: number){
-    this.songs.update(s => [...s, {title: t, artist: art, album: alb, genre: g, year: y}])
+    this.songs.update(s => [...s, {title: t, artist: art, album: alb, genre: g, year: y}]);
     //s is song and i am updating the Songs list to include new song
   }
 
   removeSong(songName: string){
-    this.songs.update(songList => songList.filter(s => s.title !== songName))
+    this.songs.update(songList => songList.filter(s => s.title !== songName));
     //songList is the entire song list/array, s is the individual song in the filter method
 
   }

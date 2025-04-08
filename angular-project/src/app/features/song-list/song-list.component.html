@@ -1,1 +1,10 @@
 <p>song-list works!</p>
+
+<div class="song-list">
+  <h1>Song List</h1>
+  @for (s of songs(); track s.title){
+    <app-song-item [songInfo]="s" />
+  } @empty {
+    <p>No songs have been added yet.</p>
+  }
+</div>
