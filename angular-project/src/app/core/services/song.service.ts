@@ -10,7 +10,7 @@ import { Song } from "../models/song.model";
 export class SongService {
   private songs = signal<Song[]>([
     {
-      title: 'Lovers In a Past linkedSignalSetFn',
+      title: 'Lovers In a Past',
       artist: 'Calvin Harris',
       album: 'Lovers In A Past Life (Remixes)',
       genre: 'Dance/Electonic',

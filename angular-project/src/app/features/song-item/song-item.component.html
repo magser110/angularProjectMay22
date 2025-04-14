@@ -1,5 +1,12 @@
-<p>song-item works!</p>
+
 <div class="song-item">
-  <span>{{songInfo()?.title}}</span>
+  <span>
+    {{songInfo()?.title}} by
+    {{songInfo()?.artist}}.
+    Ablum: {{songInfo()?.album}}.
+    Genre: {{songInfo()?.genre}}.
+    Released in {{songInfo()?.year}}.
+
+  </span>
   <button class="button-remove" (click)="removeSongHandler()">Remove</button>
 </div>
