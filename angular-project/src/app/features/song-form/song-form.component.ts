@@ -15,9 +15,13 @@ export class SongFormComponent implements AfterViewInit{
 
   private songForm = viewChild.required<ElementRef<HTMLFormElement>>('songForm');
 
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit called: form element available');
+  }
+
   addSongHandler(t: string, art: string, alb: string, g: string, y: number ){
-    let newSong = this.songService.addSong(t, art, alb, g, y)
-    console.log(newSong);
+    this.songService.addSong(t, art, alb, g, y)
+    console.log(t, art, alb, g, y);
 
     this.resetSongFormHandler();
   }
@@ -26,8 +30,5 @@ export class SongFormComponent implements AfterViewInit{
     this.songForm().nativeElement.reset();
   }
 
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit called: form element available');
 
-  }
 }
