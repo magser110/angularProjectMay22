@@ -1,61 +1,92 @@
-
 @if(!isEditing()){
-  <p>Add new song</p>
+<p>Add new song</p>
 } @else {
-  <p>Edit song</p>
+<p>Edit song</p>
 }
-<form #songForm (ngSubmit)="songFormHandler(titleInput.value, artistInput.value, albumInput.value, genreInput.value, +yearInput.value)">
+<form
+  #songForm
+  (ngSubmit)="
+    songFormHandler(
+      +idInput.value,
+      titleInput.value,
+      artistInput.value,
+      albumInput.value,
+      genreInput.value,
+      +yearInput.value
+    )
+  "
+>
   <div class="song-form-group">
-  <input
-  name="title"
-  type="text"
-  #titleInput
-  placeholder="song title"
-[value]="isEditing() ? songToEdit()?.title : ''"
-  required
-  />
-</div>
-<div class="song-form-group">
-  <input
-  name="artist"
-  type="text"
-  #artistInput
-  placeholder="song artist"
-  required
-  />
-</div>
-<div class="song-form-group">
-  <input
-  name="album"
-  type="text"
-  #albumInput
-  placeholder="song album"
-  required
-  />
-</div>
-<div class="song-form-group">
-  <input
-  name="genre"
-  type="text"
-  #genreInput
-  placeholder="song genre"
-  required
-  />
-</div>
-<div class="song-form-group">
-  <input
-  name="year"
-  type="number"
-  #yearInput
-  placeholder="song year"
-  required
-  />
-</div>
-<button class="button-add" type="submit">
-@if(!isEditing()) {
-Add Song
-} @else {Edit Song}
-</button>
+    <input
+      name="id"
+      type="number"
+      #idInput
+      placeholder="song id"
+      [value]="isEditing() ? songToEdit()?.id : ''"
+      required
+    />
+  </div>
 
-<button class="button-clear" type="button" (click)="resetSongFormHandler()">reset</button>
+  <div class="song-form-group">
+    <input
+      name="title"
+      type="text"
+      #titleInput
+      placeholder="song title"
+      [value]="isEditing() ? songToEdit()?.title : ''"
+      required
+    />
+  </div>
+
+  <div class="song-form-group">
+    <input
+      name="artist"
+      type="text"
+      #artistInput
+      placeholder="song artist"
+      [value]="isEditing() ? songToEdit()?.artist : ''"
+      required
+    />
+  </div>
+
+  <div class="song-form-group">
+    <input
+      name="album"
+      type="text"
+      #albumInput
+      placeholder="song album"
+      [value]="isEditing() ? songToEdit()?.album : ''"
+      required
+    />
+  </div>
+
+  <div class="song-form-group">
+    <input
+      name="genre"
+      type="text"
+      #genreInput
+      placeholder="song genre"
+      [value]="isEditing() ? songToEdit()?.genre : ''"
+      required
+    />
+  </div>
+
+  <div class="song-form-group">
+    <input
+      name="year"
+      type="number"
+      #yearInput
+      placeholder="song year"
+      [value]="isEditing() ? songToEdit()?.year : ''"
+      required
+    />
+  </div>
+
+  <button class="button-add" type="submit">
+    @if(!isEditing()) { Add Song } @else {Edit Song}
+  </button>
+
+  <button class="button-clear" type="button" (click)="resetSongFormHandler()">
+    reset
+  </button>
 </form>

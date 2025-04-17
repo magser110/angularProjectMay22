@@ -29,12 +29,12 @@ songToEdit = this.songService.songToEdit
     console.log('ngAfterViewInit called: form element available');
   }
 
-  songFormHandler(t: string, art: string, alb: string, g: string, y: number) {
+  songFormHandler(id: number, t: string, art: string, alb: string, g: string, y: number) {
     if (!this.isEditing()) {
-      this.songService.addSong(t, art, alb, g, y);
+      this.songService.addSong(id, t, art, alb, g, y);
       console.log(t, art, alb, g, y);
     } else {
-      this.songService.updateSong(t, art, alb, g, y); //id songToEdit.id
+      this.songService.updateSong(id, t, art, alb, g, y); //id songToEdit.id
     }
 
     this.resetSongFormHandler();

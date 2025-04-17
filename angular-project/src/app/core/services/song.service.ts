@@ -19,12 +19,14 @@ songToEdit = signal<Song | null>(null)
     // just reading the songs i already have existing
   }
 
-  addSong(t: string, art: string, alb: string, g: string, y: number){
-    this.songs.update(s => [...s, {title: t, artist: art, album: alb, genre: g, year: y}]);
+  addSong(id: number, t: string, art: string, alb: string, g: string, y: number){
+    this.songs.update(s => [...s, {id: id, title: t, artist: art, album: alb, genre: g, year: y}]);
     //s is song and i am updating the Songs list to include new song
   }
 
-  updateSong(){
+  updateSong(newId: number, t: string, art: string, alb: string, g: string, y: number){
+    this.songs.update(songList => songList.map(s => s.id === newId ? {... s, title: t, artist: art, album: alb, genre: g, year: y} : s));
+    // this.songs.update(s.find(this.songs.id) )
 //songs.update(s.find(song.id === s.id)) song<= when you change anything inside the find method it live updates the originalarry
 //s.title === the new enetered titleit should update the array
     //.find!! instead of map
@@ -36,6 +38,5 @@ songToEdit = signal<Song | null>(null)
   removeSong(songName: string){
     this.songs.update(songList => songList.filter(s => s.title !== songName));
     //songList is the entire song list/array, s is the individual song in the filter method
-
   }
 }
