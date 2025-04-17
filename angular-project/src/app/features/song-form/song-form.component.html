@@ -1,11 +1,17 @@
-<p>Add new song</p>
-<form #songForm (ngSubmit)="addSongHandler(titleInput.value, artistInput.value, albumInput.value, genreInput.value, +yearInput.value)">
+
+@if(!isEditing()){
+  <p>Add new song</p>
+} @else {
+  <p>Edit song</p>
+}
+<form #songForm (ngSubmit)="songFormHandler(titleInput.value, artistInput.value, albumInput.value, genreInput.value, +yearInput.value)">
   <div class="song-form-group">
   <input
   name="title"
   type="text"
   #titleInput
   placeholder="song title"
+[value]="isEditing() ? songToEdit()?.title : ''"
   required
   />
 </div>
@@ -45,7 +51,11 @@
   required
   />
 </div>
+<button class="button-add" type="submit">
+@if(!isEditing()) {
+Add Song
+} @else {Edit Song}
+</button>
 
-<button class="button-add" type="submit">add song</button>
 <button class="button-clear" type="button" (click)="resetSongFormHandler()">reset</button>
 </form>
