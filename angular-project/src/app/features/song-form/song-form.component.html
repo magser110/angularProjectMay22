@@ -83,11 +83,13 @@
     />
   </div>
 
-  <button class="button-add" type="submit">
+  <button class="button-add" type="submit" >
     @if(!isEditing()) { Add Song } @else {Edit Song}
   </button>
 
-  <button class="button-clear" type="button" (click)="resetSongFormHandler()">
+  <button class="button-clear" type="button"
+  (click)="resetSongFormHandler()"
+  >
     reset
   </button>
 </form>
