@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { SongService } from '../../core/services/song.service';
 import { Song } from '../../core/models/song.model';
 
@@ -7,6 +7,7 @@ import { Song } from '../../core/models/song.model';
   imports: [],
   templateUrl: './song-item.component.html',
   styleUrl: './song-item.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongItemComponent {
   private songService = inject(SongService);
@@ -24,5 +25,11 @@ export class SongItemComponent {
 
   removeSongHandler() {
     this.songService.removeSong(this.songInfo()!.title);
+  }
+
+
+  get deBugOutput(){
+    console.log('[SongItemComponent] generated');
+    return '';
   }
 }

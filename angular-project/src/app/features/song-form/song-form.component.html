@@ -23,6 +23,7 @@
       #idInput
       placeholder="song id"
       [value]="isEditing() ? songToEdit()?.id : ''"
+      [readOnly]="isEditing()"
       required
     />
   </div>
@@ -90,3 +91,5 @@
     reset
   </button>
 </form>
+
+<p>{{deBugOutput}}</p>

@@ -1,6 +1,7 @@
 
 <div class="song-item">
   <span>
+    {{songInfo()?.id}}.
     {{songInfo()?.title}} by
     {{songInfo()?.artist}}.
     Ablum: {{songInfo()?.album}}.
@@ -11,3 +12,4 @@
   <button (click)="editClickHandler()">Edit</button>
   <button class="button-remove" (click)="removeSongHandler()">Remove</button>
 </div>
+<p>{{deBugOutput}}</p>
